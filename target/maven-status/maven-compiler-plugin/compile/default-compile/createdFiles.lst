@@ -1,0 +1,4 @@
+com\mozanta\task_management_app\TaskManagementAppApplication.class
+com\mozanta\task_management_app\controller\TaskController.class
+com\mozanta\task_management_app\repository\TaskRepository.class
+com\mozanta\task_management_app\model\Task.class
