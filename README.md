@@ -6,10 +6,10 @@ A Task Management App using SpringBoot,mongoDB and React.js.
 
 -----------------------------------------------------------------------
 APIs  
-1.POST(/api/task/add) - create new Task  
-GET(/api/tasks) -retrieve all Tasks  
-PUT(/api/task/complete/:id ) - update a as completed and uncompleted by :id  
-DELETE ( 	/api/task/:id) - delete the task by :id  
+        POST(/api/task/add) - create new Task  
+        GET(/api/tasks) -retrieve all Tasks  
+        PUT(/api/task/complete/:id ) - update a as completed and uncompleted by :id  
+        DELETE ( 	/api/task/:id) - delete the task by :id  
 
 -----------------------------------------------------------------------
 
