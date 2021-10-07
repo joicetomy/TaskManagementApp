@@ -7,11 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class TaskController {
@@ -21,7 +20,6 @@ public class TaskController {
 
 //    Api for adding a new task
     @PostMapping("/task/add")
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
         try {
             Task _task = taskRepository.save(new Task(task.getTask(),false));
@@ -33,23 +31,17 @@ public class TaskController {
 
     //    Api for retrieving all tasks
     @GetMapping("/tasks")
-    @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<List<Task>> getAllTasks(@RequestParam(required = false) String task) {
+    public ResponseEntity<List<Task>> getAllTasks(){
         try {
-            List<Task> tasks = new ArrayList<Task>();
-
-            if (task == null)
-                taskRepository.findAll().forEach(tasks::add);
-            else
-                taskRepository.findByTaskContaining(task).forEach(tasks::add);
-            return new ResponseEntity<>(tasks, HttpStatus.OK);
+            List<Task> tasks =  taskRepository.findAll();
+            return new ResponseEntity<List<Task>>(tasks, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     //    Api for marking task as complete or not complete
     @PutMapping("/task/complete/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Task> updateTask(@PathVariable("id") String id, @RequestBody Task task) {
         Optional<Task> taskData = taskRepository.findById(id);
 
@@ -64,7 +56,6 @@ public class TaskController {
 
     //    Api for deleting a task
     @DeleteMapping("/task/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<HttpStatus> deleteTask(@PathVariable("id") String id) {
         try {
             taskRepository.deleteById(id);
