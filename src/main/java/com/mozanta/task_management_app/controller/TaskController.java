@@ -34,7 +34,7 @@ public class TaskController {
     public ResponseEntity<List<Task>> getAllTasks(){
         try {
             List<Task> tasks =  taskRepository.findAll();
-            return new ResponseEntity<List<Task>>(tasks, HttpStatus.OK);
+            return new ResponseEntity<>(tasks, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

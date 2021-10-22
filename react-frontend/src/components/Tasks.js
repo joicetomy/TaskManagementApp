@@ -37,15 +37,11 @@ class TasksContainer extends Component {
                 task: this.state.inputValue
             };
             if (data.task !== '') {
-
                 TaskDataService.create(data)
                     .then(response => {
-                        this.setState({
-                            id: response.data.id,
-                            task: response.data.task,
-                            completed: false
-                        });
-                        window.location.reload();
+                        console.log(response);
+                        this.setState({ inputValue: "" });
+                        this.getTasks();
                     })
 
                     .catch(e => {
@@ -74,7 +70,7 @@ class TasksContainer extends Component {
             .catch(error => console.log(error))
     }
 
-    deleteTask(id) {
+    deleteTask = (id) => {
         TaskDataService.deleteTask(id)
             .then(response => {
                 console.log(response.data);

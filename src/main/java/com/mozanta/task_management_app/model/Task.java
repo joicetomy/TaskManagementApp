@@ -13,7 +13,6 @@ public class Task {
     public Task() {
 
     }
-
     public Task(String task, boolean completed) {
         this.task = task;
         this.completed =completed;
